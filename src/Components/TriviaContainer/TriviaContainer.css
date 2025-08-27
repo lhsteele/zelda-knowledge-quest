@@ -66,3 +66,10 @@
     letter-spacing: 0.05em;
     font-weight: 500;
   }
+
+  @media screen and (max-width: 767px) {
+    .sheikah-slate {
+        width: 200px;
+        height: 100px;
+    }
+}

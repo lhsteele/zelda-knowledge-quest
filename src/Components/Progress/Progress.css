@@ -3,6 +3,13 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 767px) {
+  .progress-container {
+      width: 250px;
+      justify-self: center;
+  }
+}
+
 .pixel-heart {
     position: relative;
     display: inline-block;
