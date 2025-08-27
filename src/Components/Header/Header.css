@@ -1,0 +1,5 @@
+.header {
+    font-family: var(--font-zelda-custom);
+    font-size: 45px;
+    color: var(--zelda-gold);
+}

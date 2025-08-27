@@ -177,28 +177,3 @@ function getHardcodedQuestions(count: number): QuestionType[] {
 function generateQuestionId(): string {
   return `q_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 }
-
-// Utility functions for debugging/admin
-export function getDebugInfo() {
-  const lastCall = localStorage.getItem(LAST_API_CALL_KEY);
-  const timeUntilNext = getTimeUntilNextAPICall();
-  
-  return {
-    canCallAPI: canCallAPI(),
-    lastAPICall: lastCall ? new Date(parseInt(lastCall)).toLocaleString() : 'Never',
-    timeUntilNextCall: Math.ceil(timeUntilNext / 60000), // in minutes
-    hardcodedQuestionCount: hardcodedQuestions.length,
-    apiProvider: 'Google Gemini'
-  };
-}
-
-export function resetAPITimer(): void {
-  localStorage.removeItem(LAST_API_CALL_KEY);
-  console.log('API timer reset - next quiz will use Gemini API');
-}
-
-export function forceHardcodedQuestions(): void {
-  // Set timestamp to future to force hardcoded questions
-  localStorage.setItem(LAST_API_CALL_KEY, (Date.now() + DEBOUNCE_DURATION).toString());
-  console.log('Forced hardcoded mode for 10 minutes');
-}

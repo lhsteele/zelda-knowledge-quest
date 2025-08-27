@@ -1,0 +1,26 @@
+.triforce-loader {
+    color: var(--zelda-gold);
+    animation: gentle-pulse 2s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+  
+  @keyframes gentle-pulse {
+    0%, 100% { 
+      filter: drop-shadow(0 0 8px rgba(249, 233, 3, 0.6));
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% { 
+      filter: drop-shadow(0 0 20px rgba(212, 175, 55, 1));
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  .loader-text {
+    font-family: var(--font-zelda-custom);
+    color: var(--zelda-gold);
+  }

@@ -1,0 +1,22 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  grid-template-rows: auto 1fr;
+  background-image: url('./assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.app-btn {
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  justify-self: center;
+  border: none;
+  font-family: var(--font-zelda-custom);
+  font-size: 40px;
+  color: var(--zelda-gold);
+  cursor: pointer;
+}

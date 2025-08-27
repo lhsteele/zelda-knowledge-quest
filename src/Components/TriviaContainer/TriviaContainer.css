@@ -1,0 +1,68 @@
+.trivia-container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    justify-content: center;
+}
+
+.sheikah-slate {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 2px solid #24c3f0;
+    border-radius: 12px;
+    padding: 20px 30px;
+    color: #24c3f0;
+    font-family: var(--font-zelda-ui);
+    font-size: 1.2rem;
+    box-shadow: 
+      0 0 20px rgba(36, 195, 240, 0.4),
+      inset 0 0 20px rgba(36, 195, 240, 0.1);
+    position: relative;
+    max-width: 600px;
+    width: 600px;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sheikah-slate::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #24c3f0, transparent, #24c3f0);
+    border-radius: 14px;
+    z-index: -1;
+    animation: border-glow 3s ease-in-out infinite alternate;
+  }
+  
+  .sheikah-slate::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background: #24c3f0;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #24c3f0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes border-glow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+  
+  .slate-text {
+    text-shadow: 0 0 10px rgba(36, 195, 240, 0.8);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }

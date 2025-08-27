@@ -1,0 +1,37 @@
+.progress-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pixel-heart {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 18px;
+    margin: 0 2px;
+  }
+  
+  .pixel-heart::before,
+  .pixel-heart::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 16px;
+    background: #ff4444;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+  
+  .pixel-heart::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+  
+  /* Empty heart variant */
+  .pixel-heart.empty::before,
+  .pixel-heart.empty::after {
+    background: transparent;
+    border: 2px solid #666;
+  }

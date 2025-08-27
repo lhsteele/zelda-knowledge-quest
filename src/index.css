@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
+
+@font-face {
+  font-family: 'HylianFont';
+  src: url('/fonts/hylian-font.otf') format('opentype');
+  font-display: swap;
+}
+
+
+
+:root {
+  --font-zelda-custom: 'HylianFont', 'Cinzel', serif;
+  --font-zelda-body: 'Cinzel', sans-serif;
+
+  --dark-slate: #0a0e27;
+  --zelda-gold: #786919;
+}
+
+body {
+  background-color: var(--dark-slate);
+  color: white;
+  margin: 0;
+}

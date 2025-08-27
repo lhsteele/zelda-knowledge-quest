@@ -1,0 +1,121 @@
+.trivia-cards {
+    padding: 20px;
+}
+
+.trivia-card {
+    font-family: var(--font-zelda-body);
+    height: 500px;
+    width: 500px;
+    background-color: #f1efe4;
+    border-radius: 8px;
+    color: var(--dark-slate);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    padding: 20px;
+}
+
+.trivia-option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.trivia-option {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.selected {
+    display: inline-block;
+    transform-origin: center center;
+    animation: selected-animation 2s ease-in-out infinite;
+}
+
+@keyframes selected-animation {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.5) rotate(0deg); 
+      }
+      50% { 
+        opacity: 1; 
+        transform: scale(1.2) rotate(180deg); 
+        filter: drop-shadow(0 0 15px #00ff88);
+      }
+      100% { 
+        opacity: 0; 
+        transform: scale(0.8) rotate(360deg); 
+      }
+}
+
+.fairy-dust-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.fairy-dust {
+    position: absolute;
+    animation: fairy-dust 2s ease-out infinite;
+    font-size: 30px;
+}
+
+.particle-1 { 
+    left: 20%; 
+    animation-delay: 0s; 
+    color: #e9b60f;
+}
+.particle-2 { 
+    left: 40%; 
+    animation-delay: 0.4s; 
+    color: #d4af37;
+}
+.particle-3 { 
+    left: 60%; 
+    animation-delay: 0.8s; 
+    color: #f9db19;
+}
+.particle-4 { 
+    left: 80%; 
+    animation-delay: 1.2s; 
+    color: #d4af37;
+}
+.particle-5 { 
+    left: 30%; 
+    animation-delay: 1.6s; 
+    color: #e7fb0b;
+}
+
+@keyframes fairy-dust {
+    0% { 
+        opacity: 0; 
+        transform: translateY(50px) scale(0); 
+    }
+    25% { 
+        opacity: 0.8; 
+        transform: translateY(20px) scale(1); 
+    }
+    50% { 
+        opacity: 1; 
+        transform: translateY(-10px) scale(1.2); 
+        filter: brightness(1.5);
+    }
+    100% { 
+        opacity: 0; 
+        transform: translateY(-60px) scale(0.2); 
+    }
+}
+
+.submit-btn {
+    width: 20%;
+    justify-self: center;
+    border-radius: 5px;
+    border: 1px solid var(--dark-slate);
+    font-family: var(--font-zelda-body);
+    background-color: transparent;
+    cursor: pointer;
+}
