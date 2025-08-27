@@ -4,11 +4,13 @@ import type { QuestionType } from '../../services/types';
 
 export type TriviaCardsProps = {
     setCurrentQuestion: React.Dispatch<React.SetStateAction<number>>,
-    setCorrectAnswers: React.Dispatch<React.SetStateAction<number>>,
+    setTotalCorrect: React.Dispatch<React.SetStateAction<number>>,
+    correctAnswers: number[];
+    setCorrectAnswers: React.Dispatch<React.SetStateAction<number[]>>,
     question: QuestionType
 }
 
-const TriviaCards:FunctionComponent<TriviaCardsProps> = ({ setCurrentQuestion, question, setCorrectAnswers }) => {
+const TriviaCards:FunctionComponent<TriviaCardsProps> = ({ setCurrentQuestion, question, setTotalCorrect, correctAnswers, setCorrectAnswers }) => {
     const [checking, setChecking] = useState(false)
     const [selectedOptionIdx, setSelectedOptionIdx] = useState<number | null>()
 
@@ -16,10 +18,16 @@ const TriviaCards:FunctionComponent<TriviaCardsProps> = ({ setCurrentQuestion, q
     const handleSubmitClick = () => {
         setChecking(true)
         setTimeout(() => {
+            const currentCorrect = correctAnswers
             if (selectedOptionIdx === question.correct) {
-                setCurrentQuestion(prev => prev + 1)
-                setCorrectAnswers(prev => prev + 1)
+                setTotalCorrect(prev => prev + 1)
+                currentCorrect.push(1)
+                setCorrectAnswers(currentCorrect)
+            } else {
+                currentCorrect.push(0)
+                setCorrectAnswers(currentCorrect)
             }
+            setCurrentQuestion(prev => prev + 1)
             setChecking(false)
             setSelectedOptionIdx(null)
         }, 3000)

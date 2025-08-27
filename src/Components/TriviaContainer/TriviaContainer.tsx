@@ -21,10 +21,11 @@ const scoreMap: Record<string, string> = {
 
 const TriviaContainer:FunctionComponent<TriviaContainerProps> = ({ loading, questions }) => {
     const [currentQuestion, setCurrentQuestion] = useState(0)
-    const [correctAnswers, setCorrectAnswers] = useState(0)
+    const [correctAnswers, setCorrectAnswers] = useState<number[]>([])
+    const [totalCorrect, setTotalCorrect] = useState(0)
 
     const renderScores = () => {
-        const score = correctAnswers.toString()
+        const score = totalCorrect.toString()
         return scoreMap[score] ? <div className="slate-text">{`You are ${scoreMap[score]}`}</div> : <div>{`You are ${scoreMap[0]}`}</div>
     }
 
@@ -33,15 +34,18 @@ const TriviaContainer:FunctionComponent<TriviaContainerProps> = ({ loading, ques
             return <TriforceLoader />
         } else if (currentQuestion > 9) {
             return (
-                <div className="sheikah-slate">
-                    {renderScores()}
+                <div>
+                    <Progress correctAnswers={correctAnswers}/>
+                    <div className="sheikah-slate">
+                        {renderScores()}
+                    </div>
                 </div>
             )
         } else {
             return (
                 <div className="trivia-container">
-                    <Progress currentHearts={currentQuestion}/>
-                    <TriviaCards setCurrentQuestion={setCurrentQuestion} question={questions[currentQuestion]} setCorrectAnswers={setCorrectAnswers}/>
+                    <Progress correctAnswers={correctAnswers}/>
+                    <TriviaCards setCurrentQuestion={setCurrentQuestion} question={questions[currentQuestion]} setTotalCorrect={setTotalCorrect} setCorrectAnswers={setCorrectAnswers} correctAnswers={correctAnswers}/>
                 </div>
             )
         }
