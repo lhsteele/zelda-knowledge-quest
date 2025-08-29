@@ -8,6 +8,7 @@ import type { QuestionType } from "../../services/types";
 export type TriviaContainerProps = {
     loading: boolean;
     questions: QuestionType[];
+    startNewGame: () => void;
 }
 
 const scoreMap: Record<string, string> = {
@@ -19,7 +20,7 @@ const scoreMap: Record<string, string> = {
     0: 'a friendly Kokiri! (still learning)'
 }
 
-const TriviaContainer:FunctionComponent<TriviaContainerProps> = ({ loading, questions }) => {
+const TriviaContainer:FunctionComponent<TriviaContainerProps> = ({ loading, questions, startNewGame }) => {
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [correctAnswers, setCorrectAnswers] = useState<number[]>([])
     const [totalCorrect, setTotalCorrect] = useState(0)
@@ -29,16 +30,24 @@ const TriviaContainer:FunctionComponent<TriviaContainerProps> = ({ loading, ques
         return scoreMap[score] ? <div className="slate-text">{`You are ${scoreMap[score]}`}</div> : <div>{`You are ${scoreMap[0]}`}</div>
     }
 
+    const handlePlayAgainClick = () => {
+        setCurrentQuestion(0)
+        setCorrectAnswers([])
+        setTotalCorrect(0)
+        startNewGame()
+    }
+
     const renderContent = () => {
         if (loading) {
             return <TriforceLoader />
         } else if (currentQuestion > 9) {
             return (
-                <div>
+                <div className="trivia-container-end">
                     <Progress correctAnswers={correctAnswers}/>
                     <div className="sheikah-slate">
                         {renderScores()}
                     </div>
+                    <button className="play-again-btn" onClick={handlePlayAgainClick}>Play again</button>
                 </div>
             )
         } else {

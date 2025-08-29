@@ -20,8 +20,7 @@ function App() {
       setLoading(false);
     }
   };
-  
-  
+
   const handleClick = () => {
     setShowTrivia(true)
     setLoading(true);
@@ -32,7 +31,7 @@ function App() {
     <div className="app">
       <Header />
       {!showTrivia && <button className="app-btn" onClick={handleClick}>Begin!</button>}
-      {showTrivia && <TriviaContainer loading={loading} questions={questions}/>}
+      {showTrivia && <TriviaContainer loading={loading} questions={questions} startNewGame={handleClick}/>}
     </div>
   )
 }

@@ -4,13 +4,13 @@
 
 .trivia-card {
     font-family: var(--font-zelda-body);
-    height: 500px;
+    min-height: 500px;
     width: 500px;
     background-color: #f1efe4;
     border-radius: 8px;
     color: var(--dark-slate);
     display: grid;
-    grid-template-rows: auto auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
     padding: 20px;
 }
 
@@ -32,6 +32,15 @@
     display: flex;
     gap: 10px;
     cursor: pointer;
+    align-items: center;
+}
+
+.trivia-option-marker {
+    font-size: 30px;
+}
+
+.trivia-option-marker-correct {
+    color: yellowgreen;
 }
 
 .selected {
@@ -120,6 +129,7 @@
 
 .submit-btn {
     width: 20%;
+    height: 25px;
     justify-self: center;
     border-radius: 5px;
     border: 1px solid var(--dark-slate);
